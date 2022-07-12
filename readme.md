@@ -46,5 +46,3 @@ The visualize_tiff.py file takes advantage of the rasterio.plot.show method and 
   <li>Please place your .nc file in the 'Dataset' folder.</li>
   <li>Please address the name of your .nc file in the main.py file as the 'fn' variable.</li>
 </ul>
-
->>>>>>> f6390e0ce86652fe5f1a3115ff6d6fbc8494eb87
