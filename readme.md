@@ -29,16 +29,16 @@ MPAtest is a tool for reading oceanographic data from a .nc file, writing that d
 
 <h3>Methodology</h3 style="bold">
 
-<b>Read Data</b>
+<b>Read Data</b><br>
 In the main.py file the relative file path of the .nc file is described using the fn variable. The fn variable is then converted to an array using the xarray module.
 
-<b>Calculate Water Speed</b>
+<b>Calculate Water Speed</b><br>
 The calc_water_speed.py file is use to calculate the water speed at each 'lat'-'lon' coordinate using the variables 'water-u' and 'water-v'. The 'water-u' represents the eastern velocity vector at each data point and the 'water-v' variable represents the northern velocity vector at each data point. Using Pythagorean Theorem we can calculate water speed for each pair. The water_speed variable is then assigned back to the xds array.
 
-<b>Write Tiff File</b>
+<b>Write Tiff File</b><br>
 The main.py file then prepares the water_speed variable to be saved as a .tiff file. We first convert the 'lon' variable from 0-360 to 0-180 for a more typical visualization. Then we define the proper dimensions in the water_speed variable. For example we don't need the 'depth' dimension for plotting water speed. After that we write a .tiff file for each timestamp dimension of the water_speed variable. 
 
-<b>Visualize Data</b>
+<b>Visualize Data</b><br>
 The visualize_tiff.py file takes advantage of the rasterio.plot.show method and matplotlib. We first start by visualizing the fire set of data in the time stamp series. Then with the help of a custom budget widget we can cycle through each time stamp and visualize the corresponding data. Once the file timestamp is reach the loop starts again from the first timestamp in the series. 
 
 <h3>Usage</h3 style="bold">
