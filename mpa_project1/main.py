@@ -13,6 +13,7 @@ xds = xarray.open_dataset(fn)#open data set with xarray
 def setup_lat_lon(xds):
     lon = xds.variables['lon']#get lon variable
     lat = xds.variables['lat']#get lat variable
+    wT = xds.variables['water_speed']
 
     #Reproject longitude to 0-180
     converted = []
@@ -21,7 +22,8 @@ def setup_lat_lon(xds):
         converted.append(long1)
 
     xds['lon'] = ('lon', converted)#Add converated lon to data set
-    xds = xds.sortby('lat', ascending=False)#Reverse latitude list proper North South Orientation
+    xds = xds.reindex(lat=xds.lat[::-1])#Reverse latitude list proper North South Orientation
+    xds.water_speed.values = xds.water_speed.values[::-1]#Reverse the array of water speed values
 
     return xds
 def define_tiff_content(xds):

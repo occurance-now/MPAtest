@@ -51,12 +51,11 @@ def visualize_tiff_files(primary_var, time):
             plot1 = rio.plot.show(source=file_data['water_speed_%s.tiff' % (button_count)], ax=ax, title = (f'%s\n %s' % (titles[button_count], strf_time[button_count])))
             fig.canvas.draw()
             button_count += 1
-            print(button_count)
         elif button_count == len(strf_time):
             button_count = 0
             plot1 = rio.plot.show(source=file_data['water_speed_%s.tiff' % (button_count)], ax=ax, title = (f'%s\n %s' % (titles[button_count], strf_time[button_count])))
             fig.canvas.draw()
-            print(button_count)
+            button_count = 1
         else:
             print("something went wrong")
 
